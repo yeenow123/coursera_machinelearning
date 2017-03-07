@@ -37,7 +37,18 @@ grad = zeros(size(theta));
 %
 
 
+h = sigmoid(X * theta);
 
+# Ignore first theta in gradient calc
+theta1 = [0 ; theta(2:size(theta), :)];
+
+first = -y' * log(h);
+second = (1 - y)' * log(1 - h);
+reg = (lambda / (2 * m)) * sum(theta1 .^ 2);
+
+J = (1 / m) * (first - second) + reg;
+
+grad = (1 / m) * (X' * (h - y)) + (lambda / m) * theta1;
 
 
 

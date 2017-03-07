@@ -31,6 +31,9 @@ X = [ones(m, 1) X];
 %       
 
 
+hyp = sigmoid(X * all_theta');
+[preds, indexes] = max(hyp, [], 2);
+p = indexes;
 
 
 
