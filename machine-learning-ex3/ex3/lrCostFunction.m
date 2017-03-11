@@ -39,7 +39,7 @@ grad = zeros(size(theta));
 
 h = sigmoid(X * theta);
 
-# Ignore first theta in gradient calc
+% Ignore first theta in gradient calc
 theta1 = [0 ; theta(2:size(theta), :)];
 
 first = -y' * log(h);
