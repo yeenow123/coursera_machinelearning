@@ -26,6 +26,19 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+for i=1:K
+    near_k = X(find(idx == i), :);
+    avg = mean(near_k);
+    centroids(i,:) = avg;
+%    tmp = idx;
+%    tmp(tmp == i) = 1;
+%    tmp(tmp ~= i) = 0;
+%    
+%    matters = tmp' * X; 
+%    
+%    avg = matters / m;
+%    centroids(i,:) = avg;  
+end
 
 
 
