@@ -40,14 +40,16 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+inner = ((X * Theta') - Y);
+squared = inner .^ 2;
+valid = squared .* R;
+cost_reg = (lambda / 2) * sum(sum(Theta .^ 2)) + (lambda / 2) * sum(sum(X .^ 2));
+J = (1 / 2) * sum(sum(valid)) + cost_reg;
 
 
 
-
-
-
-
-
+X_grad = (inner .* R) * Theta + (lambda * X);
+Theta_grad = (inner .* R)' * X + (lambda * Theta);
 
 
 
